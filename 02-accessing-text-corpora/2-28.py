@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+import nltk
+from nltk.corpus import wordnet as wn
+
+# Use one of the predefined similarity measures to score the similarity of each of the following pairs of words. Rank the pairs in order of decreasing similarity. How close is your ranking to the order given here, an order that was established experimentally by (Miller & Charles, 1998): car-automobile, gem-jewel, journey-voyage, boy-lad, coast-shore, asylum-madhouse, magician-wizard, midday-noon, furnace-stove, food-fruit, bird-cock, bird-crane, tool-implement, brother-monk, lad-brother, crane-implement, journey-car, monk-oracle, cemetery-woodland, food-rooster, coast-hill, forest-graveyard, shore-woodland, monk-slave, coast-forest, lad-wizard, chord-smile, glass-magician, rooster-voyage, noon-string.
+
+def similarity(word1, word2):
+    synset1 = wn.synset(word1 + '.n.01')
+    synset2 = wn.synset(word2 + '.n.01')
+
+    return synset1.path_similarity(synset2)
+
+# car-automobile 1.0
+# gem-jewel 0.125
+# journey-voyage 0.25
+# boy-lad 0.333...
+# coast-shore 0.5
+# asylum-madhouse 0.125
+# magician-wizard 0.1666...
+# midday-noon 1.0
+# furnace-stove 0.0769...
+# food-fruit 0.0909...
+# bird-cock 0.0625
+# bird-crane 0.111...
+# tool-implement 0.5
+# brother-monk 0.125
+# lad-brother 0.1428...
+# crane-implement 0.1
+# journey-car 0.05
+# monk-oracle 0.125
+# cemetery-woodland 0.111...
+# food-rooster 0.0625
+# coast-hill 0.2
+# forest-graveyard 0.0714...
+# shore-woodland 0.2
+# monk-slave 0.2
+# coast-forest 0.0909...
+# lad-wizard 0.2
+# chord-smile 0.0909...
+# glass-magician 0.111...
+# rooster-voyage 0.0416...
+# noon-string 0.0588...
